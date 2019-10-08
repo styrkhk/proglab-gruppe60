@@ -29,79 +29,70 @@ class LedBoard:
             GPIO.setup(self.pins[pin_index], GPIO.OUT)
             GPIO.output(self.pins[pin_index], pin_state)
 
-    def light_led(self, led_number): # OBS nr from 0 to 5
+    def light_led(self, led_number, duration): # OBS nr from 0 to 5
+        print("Ligth one led")
         """Turn on one of the 6 LEDs corresponding to button push"""
-        for pin_index, pin_state in enumerate(self.pin_led_states[led_number]):
-            set_pin(pin_index, pin_state)
+        start_time = time.time()
+        while start_time < duration:
+            for pin_index, pin_state in enumerate(self.pin_led_states[led_number]):
+                set_pin(pin_index, pin_state)
 
-        set_pin(0, -1)
-        set_pin(1, -1)
-        set_pin(2, -1)
+            set_pin(0, -1)
+            set_pin(1, -1)
+            set_pin(2, -1)
 
-        while True:
-            x = int(raw_input("Pin (0 to 5):"))
-            light_led(x)
+            while True:
+                x = int(raw_input("Pin (0 to 5):"))
+                light_led(x)
+
+        set_pin(led_number, -1)
+
 
     def flash_all_leds(self, duration):
         """Flash all 6 LEDs on and off for k seconds"""
-        for i in range[0, 5]:
-            set_pin(i, 1)   # Set the leds to be output and HIGH
-        time.sleep(duration)
+        print("Flash all leds")
+        for _ in range(1000*duration)
+            for i in range[0, 5]:
+                self.light_led(i)
+                time.sleep(0.1/600)
 
         for i in range[0, 5]:
             set_pin(i, -1)  # Set the leds to be input and LOW
 
     def twinkle_all_leds(self, duration):
         """Turn all LEDs on and off in sequence for k seconds"""
+        print("Twinkle")
         start_time = time.time()
         while start_time < duration:
             for i in range[0, 5]:
-                set_pin(i, 1)  # Sets the pin to HIGH
-            for i in range[0, 5]:
-                set_pin(i, -1)  # Sets the pins to LOW
-
+                self.light_led(i)
+                time.sleep(0.1 / 600)
 
             for i in range[0, 5]:
                 set_pin(i, -1)  # Sets the pins to LOW
 
     def power_up(self):
         """Pattern associated with powering up"""
-        set_pin(0, 1)
-        time.sleep(0.5)
-        set_pin(1, 1)
-        time.sleep(0.5)
-        set_pin(2, 1)
-        time.sleep(0.5)
-        set_pin(3, 1)
-        time.sleep(0.5)
-        set_pin(4, 1)
-        time.sleep(0.5)
-        set_pin(5, 1)
-        time.sleep(0.5)
+        self.light_led(0, 0.5)
+        self.light_led(1, 0.5)
+        self.light_led(2, 0.5)
+        self.light_led(3, 0.5)
+        self.light_led(4, 0.5)
+        self.light_led(5, 0.5)
 
         for i in range[0, 5]:
             set_pin(i, -1)  # Sets the pins to LOW
 
     def power_down(self):
-        for i in range[0, 5]:
-            set_pin(i, 1)  # Sets the pins to HIGH
+        self.flash_all_leds(1)
+        self.flash_all_leds(1)
+        self.flash_all_leds(1)
 
-        set_pin(0, -1)
-        time.sleep(0.5)
-        set_pin(1, -1)
-        time.sleep(0.5)
-        set_pin(2, -1)
-        time.sleep(0.5)
-        set_pin(3, -1)
-        time.sleep(0.5)
-        set_pin(4, -1)
-        time.sleep(0.5)
-        set_pin(5, -1)
 
     def success(self):
         print("success")
-        set_pin(0, 1)
+        self.light_led(1, 1)
 
     def failure(self):
         print("failure")
-        set_pin(3, 1)
+        self.light_led(3, 1)
