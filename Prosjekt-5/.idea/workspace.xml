@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8519377-59c2-44d8-a2fd-fd01bf00a1a3" name="Default Changelist" comment="" />
+    <list default="true" id="e8519377-59c2-44d8-a2fd-fd01bf00a1a3" name="Default Changelist" comment="keypad ferdig">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/keypad.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/keypad.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +93,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="litt prøving" />
-    <option name="LAST_COMMIT_MESSAGE" value="litt prøving" />
+    <MESSAGE value="keypad ferdig" />
+    <option name="LAST_COMMIT_MESSAGE" value="keypad ferdig" />
   </component>
 </project>
