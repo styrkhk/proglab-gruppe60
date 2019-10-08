@@ -3,9 +3,9 @@
 class KPCAgent:
 
     def __init__(self):
-        self.keypad = ##Keypad()
-        self.led_board = ##LedBoard()
-        self.password_file = ##Complete pathname to file holding the KPC's password
+        self.keypad = Keypad()
+        self.led_board = LedBoard()
+        self.password_file = "password.txt"     ##Complete pathname to file holding the KPC's password
         self.password_buffer = ""
         self.new_password_buffer = ""
         self.override_signal = ""
@@ -16,7 +16,7 @@ class KPCAgent:
         """Metode som initsialiserer password_buffer, kalles ved oppstart
         Kaller også power_up metoden på led_board"""
         self.password_buffer = ""
-        # self.led_board.powerup() Må led_board må ha power_up-metode
+        self.led_board.powerup()
 
 
     def get_next_signal(self):
@@ -25,7 +25,7 @@ class KPCAgent:
         if self.override_signal:
             return self.override_signal
         else:
-            return self.keypad.get_next_signal()        ##LEDBOARD MÅ HA METODEN get_next_signal
+            return self.keypad.get_next_signal()
 
 
     def verify_login(self):
@@ -38,10 +38,10 @@ class KPCAgent:
 
         if self.password_buffer == password:
             self.override_signal = "Y"
-            self.led_board.success()    # Led-board må ha en success
+            self.led_board.success()
         else:
             self.override_signal = "N"
-            self.led_board.failure()    # Led-board må ha en failure metode
+            self.led_board.failure()
 
 
     def validate_passcode_change(self):
@@ -50,9 +50,9 @@ class KPCAgent:
             f = open(self.password_file, "w")
             f.write(self.new_password_buffer)
             f.close()
-            self.led_board.success()            # Led-board må ha en success
+            self.led_board.success()
         else:
-            self.led_board.failure()            # Led-board må ha en failure
+            self.led_board.failure()
 
 
     def check_password_is_legal(self):
@@ -68,14 +68,14 @@ class KPCAgent:
 
     def flash_leds(self):
         """kaller flash_leds på LED"""
-        self.led_board.flash_all_leds()                         #ledBoard må ha denne metoden
+        self.led_board.flash_all_leds(self.led_dur)
 
     def twinkle_leds(self):
         """Kaller twinkle_leds på LED"""
-        self.led_board.twinkle_all_leds()
+        self.led_board.twinkle_all_leds(self.led_dur)
 
     def exit_action(self):
         """Kaller power_down  på LED"""
-        self.led_board.power_down()         #ledBoard må ha denne metoden
+        self.led_board.power_down()
 
 
