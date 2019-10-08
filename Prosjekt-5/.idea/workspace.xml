@@ -104,7 +104,13 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1570538088337</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="KPC-Agent ish-ferdig">
+      <created>1570540318738</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1570540318738</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="KPC-Agent Ikke fullstendig" />
     <MESSAGE value="KPC-Agent not finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="KPC-Agent not finished" />
+    <MESSAGE value="KPC-Agent ish-ferdig" />
+    <option name="LAST_COMMIT_MESSAGE" value="KPC-Agent ish-ferdig" />
   </component>
 </project>

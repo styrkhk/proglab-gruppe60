@@ -1,23 +1,24 @@
 ## import og include tidligere ark
 
+
 class KPCAgent:
 
     def __init__(self):
         self.keypad = Keypad()
         self.led_board = LedBoard()
-        self.password_file = "password.txt"     ##Complete pathname to file holding the KPC's password
+        self.password_file = "password.txt"  ##Complete pathname to file holding the KPC's password
         self.password_buffer = ""
         self.new_password_buffer = ""
         self.override_signal = ""
-        self.led_id = ""                        #Mulig dette må endres i forhold til led-board-koden
+        self.led_id = ""  # Mulig dette må endres i forhold til led-board-koden
         self.led_dur = 0
 
     def init_passcode_entry(self):
         """Metode som initsialiserer password_buffer, kalles ved oppstart
         Kaller også power_up metoden på led_board"""
         self.password_buffer = ""
+        self.new_password_buffer = ""
         self.led_board.powerup()
-
 
     def get_next_signal(self):
         """hvis overridesignal, returner dette
@@ -26,7 +27,6 @@ class KPCAgent:
             return self.override_signal
         else:
             return self.keypad.get_next_signal()
-
 
     def verify_login(self):
         """Sjekker input mot passord
@@ -43,7 +43,6 @@ class KPCAgent:
             self.override_signal = "N"
             self.led_board.failure()
 
-
     def validate_passcode_change(self):
         """Validerer og endrer passord hvis validert"""
         if self.check_password_is_legal():
@@ -54,7 +53,6 @@ class KPCAgent:
         else:
             self.led_board.failure()
 
-
     def check_password_is_legal(self):
         """Sjekker om nytt passord er lovlig"""
         if self.new_password_buffer.isnumeric() and len(self.new_password_buffer) >= 4:
@@ -64,7 +62,7 @@ class KPCAgent:
 
     def light_one_led(self):
         """Litt usikker på hvordan denne bør utformes"""
-        self.led_board.light_led(self.led_id, self.led_dur)     ##ledBoard må ha denne metoden
+        self.led_board.light_led(self.led_id, self.led_dur)  ##ledBoard må ha denne metoden
 
     def flash_leds(self):
         """kaller flash_leds på LED"""
@@ -77,5 +75,3 @@ class KPCAgent:
     def exit_action(self):
         """Kaller power_down  på LED"""
         self.led_board.power_down()
-
-
